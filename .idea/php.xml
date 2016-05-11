@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="PhpUnit">
-    <phpunit_settings>
-      <PhpUnitSettings />
-      <phpunit_by_interpreter interpreter_id="5975c646-1a58-4c9c-a632-3716faa93639" interpreter_name="Remote PHP 5.6" load_method="PHPUNIT_PHAR" bootstrap_file_path="/data/www/typo3-app/Build/BuildEssentials/PhpUnit/UnitTestBootstrap.php" configuration_file_path="/data/www/typo3-app/Build/BuildEssentials/PhpUnit/UnitTests.xml" custom_loader_path="" phpunit_phar_path="~/typo3-app/bin/phpunit" use_bootstrap_file="true" use_configuration_file="true" />
-    </phpunit_settings>
-  </component>
-</project>
