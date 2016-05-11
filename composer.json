@@ -1,0 +1,18 @@
+{
+    "description": "Custom NodeMigration operations for Neos extending the options in the core",
+    "type": "neos-package",
+    "require": {
+        "typo3/flow": "*"
+    },
+    "name": "weissheiten/neos-nodemigration",
+    "autoload": {
+        "psr-0": {
+            "Weissheiten\\Neos\\NodeMigration": "Classes/"
+        }
+    },
+    "extra": {
+        "neos": {
+            "package-key": "Weissheiten.Neos.NodeMigration"
+        }
+    }
+}
