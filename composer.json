@@ -2,7 +2,7 @@
     "description": "Custom NodeMigration operations for Neos extending the options in the core",
     "type": "neos-package",
     "require": {
-        "typo3/flow": "~3.2"
+        "neos/flow": "~3.2"
     },
     "name": "weissheiten/neos-nodemigration",
     "autoload": {
