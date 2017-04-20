@@ -8,8 +8,8 @@ namespace Weissheiten\Neos\NodeMigration\Migration\Filters;
  *
  */
 
-use TYPO3\Flow\Annotations as Flow;
-use TYPO3\TYPO3CR\Migration\Filters\FilterInterface;
+use Neos\Flow\Annotations as Flow;
+use Neos\ContentRepository\Migration\Filters\FilterInterface;
 
 /**
  * Filter nodes with a parent of a specific NodeType nodes
@@ -76,10 +76,10 @@ class HasParentOfNodeType implements FilterInterface
     /**
      * Returns TRUE if the given node has a parent of a specific nodetype
      *
-     * @param \TYPO3\TYPO3CR\Domain\Model\NodeData $node
+     * @param \Neos\ContentRepository\Domain\Model\NodeData $node
      * @return boolean
      */
-    public function matches(\TYPO3\TYPO3CR\Domain\Model\NodeData $node)
+    public function matches(\Neos\ContentRepository\Domain\Model\NodeData $node)
     {
         $nodeIsMatchingNodeType = false;
 
@@ -87,7 +87,7 @@ class HasParentOfNodeType implements FilterInterface
             $parentNode = $node->getParent();
 
             if($parentNode!==null){
-                // This will break atm for NodeTypes that no longer exist - see /Packages/Application/TYPO3.TYPO3CR/Classes/TYPO3/TYPO3CR/Migration/Filters/NodeType.php
+                // This will break atm for NodeTypes that no longer exist - see /Packages/Application/Neos.ContentRepository/Classes/TYPO3/TYPO3CR/Migration/Filters/NodeType.php
                 // version stated there is a "hack" though and does not allow for standard UnitTesting
                 $nodeType = $parentNode->getNodeType();
 

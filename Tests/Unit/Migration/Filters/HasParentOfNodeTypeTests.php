@@ -2,11 +2,11 @@
 
 namespace Weissheiten\Neos\NodeMigration\Tests\Unit\Migration\Filter;
 
-use TYPO3\TYPO3CR\Domain\Model\Node;
-use TYPO3\TYPO3CR\Domain\Model\NodeData;
+use Neos\ContentRepository\Domain\Model\Node;
+use Neos\ContentRepository\Domain\Model\NodeData;
 use Weissheiten\Neos\NodeMigration\Migration\Filters;
 
-class HasParentOfNodeTypeTests extends \TYPO3\Flow\Tests\UnitTestCase
+class HasParentOfNodeTypeTests extends \Neos\Flow\Tests\UnitTestCase
 {
 
     /**
@@ -17,7 +17,7 @@ class HasParentOfNodeTypeTests extends \TYPO3\Flow\Tests\UnitTestCase
         $mockTree = $this->getMockTree();
 
         $hasParentOfNodeTypeFilter = new \Weissheiten\Neos\NodeMigration\Migration\Filters\HasParentOfNodeType();
-        $hasParentOfNodeTypeFilter->setNodeType('TYPO3.Neos.NodeTypes:Page');
+        $hasParentOfNodeTypeFilter->setNodeType('Neos.NodeTypes:Page');
         $hasParentOfNodeTypeFilter->setWithSubTypes(false);
         $hasParentOfNodeTypeFilter->setSearchDepth(1);
 
@@ -32,7 +32,7 @@ class HasParentOfNodeTypeTests extends \TYPO3\Flow\Tests\UnitTestCase
         $mockTree = $this->getMockTree();
 
         $hasParentOfNodeTypeFilter = new \Weissheiten\Neos\NodeMigration\Migration\Filters\HasParentOfNodeType();
-        $hasParentOfNodeTypeFilter->setNodeType('TYPO3.Neos.NodeTypes:Page');
+        $hasParentOfNodeTypeFilter->setNodeType('Neos.NodeTypes:Page');
         $hasParentOfNodeTypeFilter->setWithSubTypes(false);
         $hasParentOfNodeTypeFilter->setSearchDepth(99);
 
@@ -47,7 +47,7 @@ class HasParentOfNodeTypeTests extends \TYPO3\Flow\Tests\UnitTestCase
         $mockTree = $this->getMockTree();
 
         $hasParentOfNodeTypeFilter = new \Weissheiten\Neos\NodeMigration\Migration\Filters\HasParentOfNodeType();
-        $hasParentOfNodeTypeFilter->setNodeType('TYPO3.Neos.NodeTypes:Page');
+        $hasParentOfNodeTypeFilter->setNodeType('Neos.NodeTypes:Page');
         $hasParentOfNodeTypeFilter->setWithSubTypes(false);
         $hasParentOfNodeTypeFilter->setSearchDepth(1);
 
@@ -61,7 +61,7 @@ class HasParentOfNodeTypeTests extends \TYPO3\Flow\Tests\UnitTestCase
         $mockTree = $this->getMockTree();
 
         $hasParentOfNodeTypeFilter = new \Weissheiten\Neos\NodeMigration\Migration\Filters\HasParentOfNodeType();
-        $hasParentOfNodeTypeFilter->setNodeType('TYPO3.Neos.NodeTypes:Image');
+        $hasParentOfNodeTypeFilter->setNodeType('Neos.NodeTypes:Image');
         $hasParentOfNodeTypeFilter->setWithSubTypes(false);
         $hasParentOfNodeTypeFilter->setSearchDepth(99);
 
@@ -75,7 +75,7 @@ class HasParentOfNodeTypeTests extends \TYPO3\Flow\Tests\UnitTestCase
     public function hasParentofSubType(){
         $mockTree = $this->getMockTree();
         $hasParentOfNodeTypeFilter = new \Weissheiten\Neos\NodeMigration\Migration\Filters\HasParentOfNodeType();
-        $hasParentOfNodeTypeFilter->setNodeType('TYPO3.Neos.NodeTypes:Page');
+        $hasParentOfNodeTypeFilter->setNodeType('Neos.NodeTypes:Page');
         $hasParentOfNodeTypeFilter->setWithSubTypes(true);
         $hasParentOfNodeTypeFilter->setSearchDepth(2);
 
@@ -90,21 +90,21 @@ class HasParentOfNodeTypeTests extends \TYPO3\Flow\Tests\UnitTestCase
     private function getMockTree(){
         // @var PHPUnit_Framework_MockObject_MockObject|NodeData $mockNodeData
         $nodes['siteNode'] = $this->getMockBuilder(NodeData::class)->disableOriginalConstructor()->getMock();
-        $nodes['siteNode']->expects($this->any())->method('getNodeType')->will($this->returnValue(new \TYPO3\TYPO3CR\Domain\Model\NodeType('TYPO3.Neos.NodeTypes:Page',[],[])));
+        $nodes['siteNode']->expects($this->any())->method('getNodeType')->will($this->returnValue(new \Neos\ContentRepository\Domain\Model\NodeType('Neos.NodeTypes:Page',[],[])));
 
         // @var PHPUnit_Framework_MockObject_MockObject|NodeData $mockNodeData
         $nodes['firstLevelNode'] = $this->getMockBuilder(NodeData::class)->disableOriginalConstructor()->getMock();
-        $nodes['firstLevelNode']->expects($this->any())->method('getNodeType')->will($this->returnValue(new \TYPO3\TYPO3CR\Domain\Model\NodeType('Custom.Package:SpecialPage',array(0 => new \TYPO3\TYPO3CR\Domain\Model\NodeType('TYPO3.Neos.NodeTypes:Page',[],[])),[])));
+        $nodes['firstLevelNode']->expects($this->any())->method('getNodeType')->will($this->returnValue(new \Neos\ContentRepository\Domain\Model\NodeType('Custom.Package:SpecialPage',array(0 => new \Neos\ContentRepository\Domain\Model\NodeType('Neos.NodeTypes:Page',[],[])),[])));
         $nodes['firstLevelNode']->expects($this->any())->method('getParent')->will($this->returnValue($nodes['siteNode']));
 
         // @var PHPUnit_Framework_MockObject_MockObject|NodeData $mockNodeData
         $nodes['secondLevelNode'] = $this->getMockBuilder(NodeData::class)->disableOriginalConstructor()->getMock();
-        $nodes['secondLevelNode']->expects($this->any())->method('getNodeType')->will($this->returnValue(new \TYPO3\TYPO3CR\Domain\Model\NodeType('TYPO3.Neos:ContentCollection',[],[])));
+        $nodes['secondLevelNode']->expects($this->any())->method('getNodeType')->will($this->returnValue(new \Neos\ContentRepository\Domain\Model\NodeType('Neos.Neos:ContentCollection',[],[])));
         $nodes['secondLevelNode']->expects($this->any())->method('getParent')->will($this->returnValue($nodes['firstLevelNode']));
 
         // @var PHPUnit_Framework_MockObject_MockObject|NodeData $mockNodeData
         $nodes['thirdLevelNode'] = $this->getMockBuilder(NodeData::class)->disableOriginalConstructor()->getMock();
-        $nodes['thirdLevelNode']->expects($this->any())->method('getNodeType')->will($this->returnValue(new \TYPO3\TYPO3CR\Domain\Model\NodeType('TYPO3.NeosNodeTypes:Text',[],[])));
+        $nodes['thirdLevelNode']->expects($this->any())->method('getNodeType')->will($this->returnValue(new \Neos\ContentRepository\Domain\Model\NodeType('Neos.NeosNodeTypes:Text',[],[])));
         $nodes['thirdLevelNode']->expects($this->any())->method('getParent')->will($this->returnValue($nodes['secondLevelNode']));
 
         return $nodes;
